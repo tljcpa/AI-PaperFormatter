@@ -1,61 +1,115 @@
-# AI-PaperFormatter
-📑 AI-PaperFormatter：基于大模型的智能学术论文排版系统
-📖 项目简介
-AI-PaperFormatter 是一款基于 LLM（大语言模型）的自动化排版工具，旨在解决学术论文写作中繁琐的格式调整问题。用户只需上传纯文本草稿，系统即可根据指定的学校模板（或用户口语化指令），利用 RAG 技术和 LLM 语义理解，自动生成符合严格学术规范的 Word 文档。
+这是一个为你定制的完整项目描述，涵盖了我们刚刚实现的所有高级功能（双字体控制、智能配置驱动、JSON容错等）以及涉及的技术栈。
 
-本项目采用前后端分离架构，实现了从文本清洗、结构化解析、样式提取到最终文档渲染的全链路自动化。
+你可以直接复制下面的代码块，保存为 `README.md` 或者放在你的项目文档中。
 
-🛠 技术栈 (Tech Stack)
-本项目集成了现代 Python Web 开发与 AIGC 领域的多种主流技术：
+```markdown
+# 🎓 AI-PaperFormatter (智能论文排版助手)
 
-1. 核心框架与后端 (Core & Backend)
-Python 3.10+: 项目开发语言。
+## 📖 项目简介
+AI-PaperFormatter 是一个基于大语言模型（LLM）的自动化学术论文排版系统。它能够理解用户的自然语言排版指令（如“正文用楷体，英文用 Arial”），或者根据预设的学校论文规范，将纯文本草稿自动转换为格式完美的 Word 文档。
 
-FastAPI: 高性能异步 Web 框架，提供 RESTful API 接口 (POST /generate)，负责处理排版请求与数据流转。
+本项目解决了传统排版中“中西文字体分离设置”、“复杂格式调整繁琐”等痛点，实现了从规则解析到文档生成的全链路自动化。
 
-Uvicorn: 基于 uvloop 的 ASGI 服务器，提供生产级的高并发支持。
+---
 
-Pydantic V2: 用于构建严格的数据模型 (GlobalStyleConfig)，确保 AI 输出的排版参数（如字号、间距、对齐方式）符合预定义 Schema，杜绝格式错误。
+## ✨ 核心功能
 
-2. 人工智能与编排 (AI & Orchestration)
-LangChain: 核心 LLM 编排框架。用于构建 Prompt Template、管理 Chain 的调用流（Chain of Thought），以及处理 Output Parsers。
+### 1. 🤖 双模型智能引擎 (Dual-Model Engine)
+* **C-Model (Config Engine)**: 负责解析排版规则。支持从自然语言指令中提取字体、字号、行距、对齐方式等参数。
+    * *亮点*: 内置强大的**字体映射系统**，能自动将口语化的“楷体”、“小四”转换为系统可识别的 `KaiTi` 和 `12.0pt`。
+* **B-Model (Block Engine)**: 负责内容结构化。自动识别文章中的标题、正文、图片说明，并进行结构化切分，同时具备 JSON 格式容错和符号转义能力。
 
-ZhipuAI (GLM-4): 底层大语言模型。利用其强大的语义理解能力进行：
+### 2. 🔠 中西文双字体独立控制 (Smart Dual-Font Rendering)
+突破了普通 Word 库的限制，实现了**中英文字体分离渲染**：
+* 支持“双通道”指定：例如中文使用 **宋体**，英文/数字使用 **Times New Roman**。
+* 支持智能回退策略：如果用户未指定英文字体，系统会根据中文字体类型（衬线/无衬线）自动匹配最合适的英文字体（如黑体配 Arial，宋体配 Times）。
 
-B-Model: 文本结构化润色（识别标题、正文、图注）。
+### 3. ⚙️ 配置驱动架构 (Config-Driven Architecture)
+* **外部化配置**: 字体映射表（`font_config.json`）与代码逻辑分离，无需修改代码即可扩展支持新字体（如“方正小篆”）。
+* **动态加载**: 系统启动时自动加载最新的字体和字号配置，具备极强的扩展性。
 
-C-Model: 排版规则提取（将用户口语指令转化为 JSON 配置）。
+### 4. 📄 所见即所得的文档生成
+* 基于 `python-docx` 深度定制的渲染器，直接操作 Word底层 XML (`w:eastAsia`)，确保格式在任何设备上打开都标准统一。
 
-Prompt Engineering: 包含复杂的提示词工程，如 JSON 格式强制约束、特殊字符转义处理、中英文映射指南等。
+---
 
-3. 文档处理与渲染 (Document Processing)
-python-docx: 核心文档生成库。用于操作 Word (.docx) 文件的底层 XML 结构。
+## 🛠 技术栈 (Tech Stack)
 
-OOXML (Open Office XML): 深入使用了 docx.oxml.ns.qn 命名空间，直接操作 Word 底层元素。
+### 核心语言
+* **Python 3.10+**: 项目开发语言。
 
-双字体渲染算法 (Dual-Font Rendering): 自研的字体控制逻辑，实现了中西文/数字字体独立控制（如：中文用楷体，英文/数字强制用 Times New Roman），解决了传统 Python 库无法区分中英文字体的痛点。
+### Web 框架 & API
+* **FastAPI**: 高性能后端 API 框架，提供 RESTful 接口。
+* **Uvicorn**: ASGI 服务器，负责承载后端服务。
+* **Streamlit**: 前端交互界面，提供文件上传、指令输入和实时反馈。
 
-4. 前端交互 (Frontend)
-Streamlit: 快速构建的交互式 Web 界面。提供文件上传（Drag & Drop）、实时进度条反馈、排版参数配置及结果文档下载功能。
+### AI & LLM 生态
+* **LangChain**: 大模型应用开发框架，管理 Prompt Template 和 Chain。
+* **ZhipuAI (GLM-4)**: 智谱 AI 大模型，提供强大的语义理解和 JSON 格式化输出能力。
+* **Pydantic**: 数据结构定义与校验，确保排版参数的类型安全。
 
-5. 工程化与配置 (Engineering)
-Config-Driven Architecture: 采用配置文件驱动设计（如 font_config.json），将字体映射表与业务代码解耦，支持无需重启即可热更新字体库。
+### 文档处理
+* **python-docx**: 用于生成 `.docx` 文件。
+* **lxml / OpenXML**: 用于处理 Word 文档底层的 XML 命名空间，实现中西文分体设置。
 
-Robust JSON Handling: 内置容错机制，自动修复 LLM 输出的不标准 JSON（如 Markdown 包裹清洗、双引号转义），保证系统稳定性。
+### 工具与规范
+* **JSON**: 数据交换格式。
+* **Requests**: 前后端通信。
 
-🚀 核心功能亮点
-智能样式提取 (Intent Parsing)
+---
 
-系统不依赖死板的模板代码，而是通过 LLM 理解用户的自然语言指令（例如：“把标题改成黑体三号，正文用宋体”），动态生成排版规则。
+## 📂 项目结构概览
 
-中西文自动分体 (Smart Font Pairing)
+```text
+AI-PaperFormatter/
+├── app/
+│   ├── api/            # API 路由定义
+│   ├── core/           # 核心配置与合并逻辑
+│   ├── engine/         # AI 引擎核心
+│   │   ├── llm_engine.py   # 大模型交互 (C-Model & B-Model)
+│   │   └── renderer.py     # Word 渲染器 (含双字体逻辑)
+│   ├── models/         # Pydantic 数据模型 (Schema)
+│   └── main.py         # 后端启动入口
+├── data/
+│   ├── font_config.json    # 字体/字号映射配置文件
+│   └── rules/              # 学校预设规则库
+├── web_demo.py         # Streamlit 前端页面
+├── requirements.txt    # 项目依赖列表
+└── README.md           # 项目说明文档
 
-针对学术论文的特殊要求，系统内置了智能分体逻辑。即使用户只指定了中文字体，渲染引擎也会自动为其中的英文和数字匹配最合适的西文字体（如：黑体配 Arial，宋体配 Times New Roman）。
+```
 
-结构化内容识别
+---
 
-利用 AI 自动识别文本中的章节标题、正文段落和图片/表格说明，并根据识别结果分别应用不同的样式规则。
+## 🚀 快速开始
 
-高度可扩展性
+1. **环境安装**
+```bash
+pip install -r requirements.txt
 
-支持自定义学校模板 (data/rules/*.json) 和字体库 (data/font_config.json)，可轻松适配不同高校的毕业论文格式要求。
+```
+
+
+2. **启动后端服务 (Backend)**
+```bash
+py -3.10 -m app.main
+
+```
+
+
+3. **启动前端界面 (Frontend)**
+```bash
+streamlit run web_demo.py
+
+```
+
+
+4. **使用示例**
+* 在网页输入指令：*"把标题改成黑体二号，正文中文用楷体，英文用 Arial，行距 1.5 倍"*
+* 上传文本草稿，点击生成即可获得排版好的 Word 文档。
+
+
+
+```
+
+```
