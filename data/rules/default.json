@@ -1,0 +1,48 @@
+{
+  "school_id": "default",
+  "heading_1": {
+    "font_name": "SimHei", 
+    "font_size": 16.0,
+    "align": "CENTER",
+    "line_spacing": 1.5,
+    "space_before": 12.0,
+    "space_after": 12.0,
+    "is_bold": true
+  },
+  "heading_2": {
+    "font_name": "SimHei",
+    "font_size": 14.0,
+    "align": "LEFT",
+    "line_spacing": 1.5,
+    "space_before": 6.0,
+    "space_after": 6.0,
+    "is_bold": true
+  },
+  "heading_3": {
+    "font_name": "SimHei",
+    "font_size": 12.0,
+    "align": "LEFT",
+    "line_spacing": 1.5,
+    "space_before": 6.0,
+    "space_after": 0.0,
+    "is_bold": true
+  },
+  "body_text": {
+    "font_name": "SimSun",
+    "font_size": 12.0,
+    "align": "JUSTIFY",
+    "line_spacing": 1.5,
+    "space_before": 0.0,
+    "space_after": 0.0,
+    "is_bold": false
+  },
+  "caption": {
+    "font_name": "KaiTi",
+    "font_size": 10.5,
+    "align": "CENTER",
+    "line_spacing": 1.0,
+    "space_before": 6.0,
+    "space_after": 6.0,
+    "is_bold": false
+  }
+} 

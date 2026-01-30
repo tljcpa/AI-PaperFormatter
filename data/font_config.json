@@ -1,0 +1,44 @@
+{
+  "font_map_cn": {
+    "宋体": "SimSun",
+    "黑体": "SimHei",
+    "楷体": "KaiTi",
+    "仿宋": "FangSong",
+    "微软雅黑": "Microsoft YaHei",
+    "隶书": "LiSu",
+    "幼圆": "YouYuan",
+    "等线": "DengXian",
+    "华文黑体": "STHeiti",
+    "华文楷体": "STKaiti",
+    "华文宋体": "STSong",
+    "华文仿宋": "STFangsong",
+    "华文细黑": "STXihei",
+    "华文行楷": "STXingkai",
+    "方正舒体": "FZShuTi",
+    "方正姚体": "FZYaoti"
+  },
+  "font_map_en": {
+    "Times New Roman": "Times New Roman",
+    "Arial": "Arial",
+    "Calibri": "Calibri",
+    "Consolas": "Consolas"
+  },
+  "size_map": {
+    "初号": 42.0,
+    "小初": 36.0,
+    "一号": 26.0,
+    "小一": 24.0,
+    "二号": 22.0,
+    "小二": 18.0,
+    "三号": 16.0,
+    "小三": 15.0,
+    "四号": 14.0,
+    "小四": 12.0,
+    "五号": 10.5,
+    "小五": 9.0,
+    "六号": 7.5,
+    "小六": 6.5,
+    "七号": 5.5,
+    "八号": 5.0
+  }
+}
