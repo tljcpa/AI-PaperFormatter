@@ -1,8 +1,3 @@
-这是一个为你定制的完整项目描述，涵盖了我们刚刚实现的所有高级功能（双字体控制、智能配置驱动、JSON容错等）以及涉及的技术栈。
-
-你可以直接复制下面的代码块，保存为 `README.md` 或者放在你的项目文档中。
-
-```markdown
 # 🎓 AI-PaperFormatter (智能论文排版助手)
 
 ## 📖 项目简介
@@ -76,40 +71,3 @@ AI-PaperFormatter/
 ├── web_demo.py         # Streamlit 前端页面
 ├── requirements.txt    # 项目依赖列表
 └── README.md           # 项目说明文档
-
-```
-
----
-
-## 🚀 快速开始
-
-1. **环境安装**
-```bash
-pip install -r requirements.txt
-
-```
-
-
-2. **启动后端服务 (Backend)**
-```bash
-py -3.10 -m app.main
-
-```
-
-
-3. **启动前端界面 (Frontend)**
-```bash
-streamlit run web_demo.py
-
-```
-
-
-4. **使用示例**
-* 在网页输入指令：*"把标题改成黑体二号，正文中文用楷体，英文用 Arial，行距 1.5 倍"*
-* 上传文本草稿，点击生成即可获得排版好的 Word 文档。
-
-
-
-```
-
-```
