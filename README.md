@@ -77,4 +77,4 @@ AI-PaperFormatter/
 
 
 ![2442a7cb9a298fc16efd923771856b8e](https://github.com/user-attachments/assets/f5a5da7d-2665-4b36-8162-e9704fc65878)
-
+作者微信：liuliangka985211
