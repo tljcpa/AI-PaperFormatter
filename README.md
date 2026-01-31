@@ -71,3 +71,10 @@ AI-PaperFormatter/
 ├── web_demo.py         # Streamlit 前端页面
 ├── requirements.txt    # 项目依赖列表
 └── README.md           # 项目说明文档
+
+
+
+
+
+![2442a7cb9a298fc16efd923771856b8e](https://github.com/user-attachments/assets/f5a5da7d-2665-4b36-8162-e9704fc65878)
+
